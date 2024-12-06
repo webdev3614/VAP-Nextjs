@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import {
   Users,
@@ -9,7 +11,7 @@ import {
   LineChart,
   MessageSquare,
   Webhook,
-  ChevronDown,
+  ChevronDown
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -27,7 +29,7 @@ export const navItems: NavItem[] = [
     title: "Overview",
     href: "/overview",
     icon: LineChart,
-    isSelected: true,
+    isSelected: true
   },
   {
     title: "Platform",
@@ -38,39 +40,39 @@ export const navItems: NavItem[] = [
       {
         title: "Assistants",
         href: "/platform/assistants",
-        icon: Users,
+        icon: Users
       },
       {
         title: "Phone Numbers",
         href: "/platform/phone-numbers",
-        icon: Phone,
+        icon: Phone
       },
       {
         title: "Files",
         href: "/platform/files",
-        icon: FileText,
+        icon: FileText
       },
       {
         title: "Tools",
         href: "/platform/tools",
-        icon: Tool,
+        icon: Tool
       },
       {
         title: "Blocks",
         href: "/platform/blocks",
-        icon: Cube,
+        icon: Cube
       },
       {
         title: "Squads",
         href: "/platform/squads",
-        icon: UsersRound,
-      },
-    ],
+        icon: UsersRound
+      }
+    ]
   },
   {
     title: "Voice Library",
     href: "/voice-library",
-    icon: MessageSquare,
+    icon: MessageSquare
   },
   {
     title: "Logs",
@@ -81,33 +83,27 @@ export const navItems: NavItem[] = [
       {
         title: "Calls",
         href: "/logs/calls",
-        icon: Phone,
+        icon: Phone
       },
       {
         title: "API Requests",
         href: "/logs/api",
-        icon: Tool,
+        icon: Tool
       },
       {
         title: "Webhooks",
         href: "/logs/webhooks",
-        icon: Webhook,
-      },
-    ],
-  },
+        icon: Webhook
+      }
+    ]
+  }
 ];
 
 interface MainNavProps extends React.HTMLAttributes<HTMLElement> {
   items?: NavItem[];
-  onNavigate: (href: string) => void;
 }
 
-export function MainNav({
-  className,
-  items,
-  onNavigate,
-  ...props
-}: MainNavProps) {
+export function MainNav({ className, items, ...props }: MainNavProps) {
   const [expandedItems, setExpandedItems] = useState<string[]>([]);
 
   const toggleExpand = (title: string) => {
@@ -135,7 +131,6 @@ export function MainNav({
               if (item.isExpandable) {
                 toggleExpand(item.title);
               } else {
-                onNavigate(item.href);
                 e.preventDefault();
                 toggleExpand(item.title);
               }
@@ -161,7 +156,6 @@ export function MainNav({
                   className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-gray-400 transition-colors hover:bg-[#2A2A2A] hover:text-white"
                   onClick={(e) => {
                     e.preventDefault();
-                    onNavigate(subItem.href);
                   }}
                 >
                   <subItem.icon className="h-4 w-4" />

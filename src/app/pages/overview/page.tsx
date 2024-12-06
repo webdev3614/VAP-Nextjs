@@ -1,13 +1,14 @@
-"use client"
-import React from "react";
-import { useRouter } from "next/navigation";
-import { LineChart } from 'lucide-react' // Replace with the actual library you use
+"use client";
 
-const TrackAndManage: React.FC = () => {
+import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
+import { LineChart } from "lucide-react";
+
+export default function OverView() {
   const router = useRouter();
 
   const handleButtonClick = () => {
-    router.push("/platform/assistants"); // Replace '/your-target-page' with the route you want to navigate to
+    router.push("/pages/platform/assistants"); // Replace '/your-target-page' with the route you want to navigate to
   };
 
   return (
@@ -17,12 +18,14 @@ const TrackAndManage: React.FC = () => {
       </div>
       <h1 className="mb-2 text-2xl font-semibold text-white">Track & Manage</h1>
       <p className="mb-4 text-gray-400">
-        Track how your assistants are performing, how much you're spending, and more.
+        Track how your assistants are performing, how much you're spending, and
+        more.
       </p>
       <p className="mb-6 text-gray-500">
-        Looks like there are no metrics here - create an assistant to start seeing your metrics.
+        Looks like there are no metrics here - create an assistant to start
+        seeing your metrics.
       </p>
-      <button
+      <Button
         onClick={handleButtonClick}
         className="bg-[#4DB6AC] hover:bg-[#45A399] text-white font-medium py-2 px-4 rounded flex items-center"
       >
@@ -42,9 +45,7 @@ const TrackAndManage: React.FC = () => {
           <path d="M5 12h14" />
           <path d="m12 5 7 7-7 7" />
         </svg>
-      </button>
+      </Button>
     </div>
   );
-};
-
-export default TrackAndManage;
+}

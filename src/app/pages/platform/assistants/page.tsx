@@ -1,58 +1,41 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { Copy, Info, MoreVertical, Phone } from 'lucide-react'
-import { Button } from "@/components/ui/button"
-import { NavigationContent } from '@/components/model'
+import { useState } from "react";
+import { Copy, Info } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { NavigationContent } from "@/components/model";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
+  SelectValue
+} from "@/components/ui/select";
+import { AssistHeader } from "@/components/platform/assistants/header";
 
 const tabs = [
-  { id: 'model', label: 'Model' },
-  { id: 'transcriber', label: 'Transcriber' },
-  { id: 'voice', label: 'Voice' },
-  { id: 'functions', label: 'Functions' },
-  { id: 'advanced', label: 'Advanced' },
-  { id: 'analysis', label: 'Analysis' },
-]
+  { id: "model", label: "Model" },
+  { id: "transcriber", label: "Transcriber" },
+  { id: "voice", label: "Voice" },
+  { id: "functions", label: "Functions" },
+  { id: "advanced", label: "Advanced" },
+  { id: "analysis", label: "Analysis" }
+];
 
 export default function NewAssistant() {
-  const [activeTab, setActiveTab] = useState('model')
+  const [activeTab, setActiveTab] = useState("model");
 
   return (
     <div className="flex h-screen bg-[#121212] text-white font-sans">
       {/* Sidebar */}
       <div className="w-60 bg-[#1E1E1E] border-r border-[#2A2A2A] p-4">
-        <div className="bg-[#252525] rounded p-2 text-sm">
-          New Assistant
-        </div>
+        <div className="bg-[#252525] rounded p-2 text-sm">New Assistant</div>
       </div>
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col">
         {/* Header */}
-        <header className="flex items-center justify-between px-4 py-3 border-b border-[#2A2A2A]">
-          <div className="flex items-center gap-4">
-            <Button className="bg-[#40B8A6] hover:bg-[#40B8A6]/90 text-white text-xs px-3 py-1 h-7 rounded">
-              Create Assistant <span className="ml-1 opacity-50">⌘</span>
-            </Button>
-            <span className="text-[#6C6C6C] text-sm">Document...</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Button variant="ghost" className="bg-[#40B8A6] hover:bg-[#40B8A6]/90 text-white text-xs px-3 py-1 h-7 rounded">
-              <Phone className="h-3 w-3 mr-2" />
-              Talk with Assistant
-            </Button>
-            <Button variant="ghost" size="icon" className="text-[#6C6C6C]">
-              <MoreVertical className="h-4 w-4" />
-            </Button>
-          </div>
-        </header>
+        <AssistHeader />
 
         {/* Main Content Area */}
         <div className="flex-1 overflow-auto p-6">
@@ -63,9 +46,7 @@ export default function NewAssistant() {
               <Copy className="h-3 w-3 cursor-pointer" />
               <Info className="h-3 w-3" />
             </div>
-            <div className="text-[#6C6C6C] text-sm">
-              4c95c227-c472-4b3a-...
-            </div>
+            <div className="text-[#6C6C6C] text-sm">4c95c227-c472-4b3a-...</div>
           </div>
 
           {/* Model Types */}
@@ -139,12 +120,11 @@ export default function NewAssistant() {
                 key={tab.id}
                 variant="ghost"
                 className={`px-2 py-1 h-8 text-sm relative ${
-                  activeTab === tab.id ? 'text-white' : 'text-[#6C6C6C]'
+                  activeTab === tab.id ? "text-white" : "text-[#6C6C6C]"
                 }`}
                 onClick={() => setActiveTab(tab.id)}
               >
                 {tab.label}
-                
                 {activeTab === tab.id && (
                   <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#40B8A6]"></span>
                 )}
@@ -159,6 +139,5 @@ export default function NewAssistant() {
         </div>
       </div>
     </div>
-  )
+  );
 }
-
