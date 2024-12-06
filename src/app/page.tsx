@@ -1,8 +1,8 @@
-"use client"
-import { Button } from "@/components/ui/button"
-import { MainNav, navItems } from "@/components/main-nav"
-import { UserNav } from "@/components/user-nav"
-import { LineChart } from 'lucide-react'
+"use client";
+import { Button } from "@/components/ui/button";
+import { MainNav, navItems } from "@/components/main-nav";
+import { UserNav } from "@/components/user-nav";
+import { LineChart } from "lucide-react";
 
 export default function DashboardPage() {
   return (
@@ -13,7 +13,7 @@ export default function DashboardPage() {
         <div className="p-6">
           <span className="text-2xl font-semibold text-primary">VAPI</span>
         </div>
-        
+
         {/* Navigation */}
         <div className="flex-1 space-y-1 px-3">
           <MainNav items={navItems} />
@@ -31,12 +31,16 @@ export default function DashboardPage() {
           <div className="mb-4">
             <LineChart className="h-24 w-24 text-gray-600" />
           </div>
-          <h1 className="mb-2 text-2xl font-semibold text-white">Track & Manage</h1>
+          <h1 className="mb-2 text-2xl font-semibold text-white">
+            Track & Manage
+          </h1>
           <p className="mb-4 text-gray-400">
-            Track how your assistants are performing, how much you're spending, and more.
+            Track how your assistants are performing, how much you're spending,
+            and more.
           </p>
           <p className="mb-6 text-gray-500">
-            Looks like there are no metrics here - create an assistant to start seeing your metrics.
+            Looks like there are no metrics here - create an assistant to start
+            seeing your metrics.
           </p>
           <Button className="bg-primary hover:bg-primary/90">
             Get Started
@@ -60,7 +64,7 @@ export default function DashboardPage() {
       </div>
 
       {/* Ask AI Button */}
-      <Button 
+      <Button
         className="fixed bottom-6 right-6 bg-secondary hover:bg-secondary/80"
         size="lg"
       >
@@ -68,5 +72,5 @@ export default function DashboardPage() {
         <div className="ml-2 h-4 w-4 rounded bg-primary">V</div>
       </Button>
     </div>
-  )
+  );
 }
