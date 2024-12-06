@@ -88,9 +88,10 @@ export const navItems: NavItem[] = [
 
 interface MainNavProps extends React.HTMLAttributes<HTMLElement> {
   items?: NavItem[]
+  onNavigate: (href: string) => void
 }
 
-export function MainNav({ className, items, ...props }: MainNavProps) {
+export function MainNav({ className, items, onNavigate, ...props }: MainNavProps) {
   const [expandedItems, setExpandedItems] = useState<string[]>([])
 
   const toggleExpand = (title: string) => {
@@ -114,9 +115,11 @@ export function MainNav({ className, items, ...props }: MainNavProps) {
                 : "text-gray-400 hover:bg-[#2A2A2A] hover:text-white",
             )}
             onClick={(e) => {
+              e.preventDefault()
               if (item.isExpandable) {
-                e.preventDefault()
                 toggleExpand(item.title)
+              } else {
+                onNavigate(item.href)
               }
             }}
           >
@@ -138,6 +141,10 @@ export function MainNav({ className, items, ...props }: MainNavProps) {
                   key={subItem.title}
                   href={subItem.href}
                   className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-gray-400 transition-colors hover:bg-[#2A2A2A] hover:text-white"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    onNavigate(subItem.href)
+                  }}
                 >
                   <subItem.icon className="h-4 w-4" />
                   <span>{subItem.title}</span>
