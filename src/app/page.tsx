@@ -1,57 +1,72 @@
-import { HelpCircle } from 'lucide-react'
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+"use client"
 import { Button } from "@/components/ui/button"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+import { MainNav, navItems } from "@/components/main-nav"
+import { UserNav } from "@/components/user-nav"
+import { LineChart } from 'lucide-react'
 
-export function UserNav() {
+export default function DashboardPage() {
   return (
-    <div className="space-y-2">
-      <p className="px-3 text-sm text-gray-400">Profile</p>
-      <div className="flex items-center gap-2">
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button 
-              variant="ghost" 
-              className="relative h-10 w-full justify-start gap-2 bg-[#4DB6AC] px-3 text-white hover:bg-[#45A399]"
-            >
-              <Avatar className="h-6 w-6 bg-[#45A399] text-xs">
-                <AvatarFallback>V</AvatarFallback>
-              </Avatar>
-              <span className="text-sm">helloworld7...</span>
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-56" align="end" forceMount>
-            <DropdownMenuLabel className="font-normal">
-              <div className="flex flex-col space-y-1">
-                <p className="text-sm font-medium leading-none">helloworld7</p>
-                <p className="text-xs leading-none text-muted-foreground">
-                  hello@world.com
-                </p>
-              </div>
-            </DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>Profile</DropdownMenuItem>
-            <DropdownMenuItem>Settings</DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>Log out</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-        <Button 
-          variant="ghost" 
-          size="icon" 
-          className="h-10 w-10 bg-[#2A2A2A] hover:bg-[#333333]"
-        >
-          <HelpCircle className="h-5 w-5 text-gray-400" />
-        </Button>
+    <div className="flex min-h-screen bg-background">
+      {/* Sidebar */}
+      <div className="flex w-64 flex-col border-r border-secondary bg-background">
+        {/* Logo */}
+        <div className="p-6">
+          <span className="text-2xl font-semibold text-primary">VAPI</span>
+        </div>
+        
+        {/* Navigation */}
+        <div className="flex-1 space-y-1 px-3">
+          <MainNav items={navItems} />
+        </div>
+
+        {/* User Navigation */}
+        <div className="p-3">
+          <UserNav />
+        </div>
       </div>
+
+      {/* Main Content */}
+      <div className="flex flex-1 items-center justify-center p-8">
+        <div className="max-w-4xl">
+          <div className="mb-4">
+            <LineChart className="h-24 w-24 text-gray-600" />
+          </div>
+          <h1 className="mb-2 text-2xl font-semibold text-white">Track & Manage</h1>
+          <p className="mb-4 text-gray-400">
+            Track how your assistants are performing, how much you're spending, and more.
+          </p>
+          <p className="mb-6 text-gray-500">
+            Looks like there are no metrics here - create an assistant to start seeing your metrics.
+          </p>
+          <Button className="bg-primary hover:bg-primary/90">
+            Get Started
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="ml-2"
+            >
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </Button>
+        </div>
+      </div>
+
+      {/* Ask AI Button */}
+      <Button 
+        className="fixed bottom-6 right-6 bg-secondary hover:bg-secondary/80"
+        size="lg"
+      >
+        Ask AI
+        <div className="ml-2 h-4 w-4 rounded bg-primary">V</div>
+      </Button>
     </div>
   )
 }
-
