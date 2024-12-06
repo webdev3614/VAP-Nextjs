@@ -1,6 +1,6 @@
-import { HelpCircle } from 'lucide-react'
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
+import { HelpCircle } from "lucide-react";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,7 +8,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 
 export function UserNav() {
   return (
@@ -17,8 +17,8 @@ export function UserNav() {
       <div className="flex items-center gap-2">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button 
-              variant="ghost" 
+            <Button
+              variant="ghost"
               className="relative h-10 w-full justify-start gap-2 bg-[#4DB6AC] px-3 text-white hover:bg-[#45A399]"
             >
               <Avatar className="h-6 w-6 bg-[#45A399] text-xs">
@@ -43,15 +43,14 @@ export function UserNav() {
             <DropdownMenuItem>Log out</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-        <Button 
-          variant="ghost" 
-          size="icon" 
+        <Button
+          variant="ghost"
+          size="icon"
           className="h-10 w-10 bg-[#2A2A2A] hover:bg-[#333333]"
         >
           <HelpCircle className="h-5 w-5 text-gray-400" />
         </Button>
       </div>
     </div>
-  )
+  );
 }
-
