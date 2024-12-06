@@ -1,4 +1,5 @@
-## Development Advanced Phone Agency
+# Development Advanced Phone Agency
+
 This project is to build the Advanced Phone Call Platform such as VAPI
 It must have include the all features of the VAPI
 
@@ -29,12 +30,6 @@ bun dev
 - Axios: For HTTP requests.
 - WebSockets: For real-time updates.
 
-## 🖥️ Usage
-
-Access the app at http://localhost:3000.
-Log in or register using your credentials.
-Use the provided interface to make calls, send messages, or interact with Dashboard.
-
 ## 🚀 Features
 
 - Real-Time Communication: Easily connect and interact with STT, TTS for real-time voice, video, or messaging.
@@ -44,7 +39,7 @@ Use the provided interface to make calls, send messages, or interact with Dashbo
 
 ## 🤝 Contributing
 
-We welcome contributions! 
+We welcome contributions!
 To contribute:
 
 Fork the repository.
