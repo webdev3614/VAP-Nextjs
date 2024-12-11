@@ -11,10 +11,11 @@ import {
   LineChart,
   MessageSquare,
   Webhook,
-  ChevronDown,
+  ChevronDown
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 export type NavItem = {
   title: string;
@@ -28,7 +29,7 @@ export const navItems: NavItem[] = [
   {
     title: "Overview",
     href: "/pages/overview",
-    icon: LineChart,
+    icon: LineChart
   },
   {
     title: "Platform",
@@ -39,39 +40,39 @@ export const navItems: NavItem[] = [
       {
         title: "Assistants",
         href: "/pages/platform/assistants",
-        icon: Users,
+        icon: Users
       },
       {
         title: "Phone Numbers",
         href: "/pages/platform/phone-numbers",
-        icon: Phone,
+        icon: Phone
       },
       {
         title: "Files",
         href: "/pages/platform/files",
-        icon: FileText,
+        icon: FileText
       },
       {
         title: "Tools",
         href: "/pages/platform/tools",
-        icon: Tool,
+        icon: Tool
       },
       {
         title: "Blocks",
         href: "/pages/platform/blocks",
-        icon: Cube,
+        icon: Cube
       },
       {
         title: "Squads",
         href: "/pages/platform/squads",
-        icon: UsersRound,
-      },
-    ],
+        icon: UsersRound
+      }
+    ]
   },
   {
     title: "Voice Library",
     href: "/pages/voice-library",
-    icon: MessageSquare,
+    icon: MessageSquare
   },
   {
     title: "Logs",
@@ -82,27 +83,31 @@ export const navItems: NavItem[] = [
       {
         title: "Calls",
         href: "/pages/logs/calls",
-        icon: Phone,
+        icon: Phone
       },
       {
         title: "API Requests",
         href: "/pages/logs/api",
-        icon: Tool,
+        icon: Tool
       },
       {
         title: "Webhooks",
         href: "/pages/logs/webhooks",
-        icon: Webhook,
-      },
-    ],
-  },
+        icon: Webhook
+      }
+    ]
+  }
 ];
 
 interface MainNavProps extends React.HTMLAttributes<HTMLElement> {
   items?: NavItem[];
 }
 
-export function MainNav({ className, items = navItems, ...props }: MainNavProps) {
+export function MainNav({
+  className,
+  items = navItems,
+  ...props
+}: MainNavProps) {
   const pathname = usePathname();
   const [expandedItems, setExpandedItems] = useState<string[]>([]);
 
@@ -127,7 +132,11 @@ export function MainNav({ className, items = navItems, ...props }: MainNavProps)
   useEffect(() => {
     // Automatically expand items if one of their subItems is active
     items.forEach((item) => {
-      if (item.subItems && isActive(item) && !expandedItems.includes(item.title)) {
+      if (
+        item.subItems &&
+        isActive(item) &&
+        !expandedItems.includes(item.title)
+      ) {
         setExpandedItems((prev) => [...prev, item.title]);
       }
     });
@@ -137,7 +146,7 @@ export function MainNav({ className, items = navItems, ...props }: MainNavProps)
     <nav className={cn("flex flex-col space-y-1", className)} {...props}>
       {items.map((item) => (
         <div key={item.title}>
-          <a
+          <Link
             href={item.href}
             className={cn(
               "flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors",
@@ -162,11 +171,11 @@ export function MainNav({ className, items = navItems, ...props }: MainNavProps)
                 )}
               />
             )}
-          </a>
+          </Link>
           {item.subItems && expandedItems.includes(item.title) && (
             <div className="ml-6 mt-1 space-y-1">
               {item.subItems.map((subItem) => (
-                <a
+                <Link
                   key={subItem.title}
                   href={subItem.href}
                   className={cn(
@@ -178,7 +187,7 @@ export function MainNav({ className, items = navItems, ...props }: MainNavProps)
                 >
                   <subItem.icon className="h-4 w-4" />
                   <span>{subItem.title}</span>
-                </a>
+                </Link>
               ))}
             </div>
           )}
