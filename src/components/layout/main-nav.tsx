@@ -44,7 +44,7 @@ export const navItems: NavItem[] = [
       },
       {
         title: "Phone Numbers",
-        href: "/platform/phone-numbers",
+        href: "/platform/phones",
         icon: Phone
       },
       {
