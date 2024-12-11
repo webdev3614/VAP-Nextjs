@@ -1,98 +1,98 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Users,
   Phone,
   FileText,
-  PenToolIcon as Tool,
-  CuboidIcon as Cube,
-  UsersRound,
+  PenTool as Tool,
+  Cuboid as Cube,
+  Users as UsersRound,
   LineChart,
   MessageSquare,
   Webhook,
   ChevronDown
 } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 export type NavItem = {
   title: string;
   href: string;
   icon: React.ComponentType<{ className?: string }>;
   isExpandable?: boolean;
-  isSelected?: boolean;
   subItems?: NavItem[];
 };
 
 export const navItems: NavItem[] = [
   {
     title: "Overview",
-    href: "/overview",
-    icon: LineChart,
-    isSelected: true
+    href: "/pages/overview",
+    icon: LineChart
   },
   {
     title: "Platform",
-    href: "/platform",
+    href: "/pages/platform",
     icon: Tool,
     isExpandable: true,
     subItems: [
       {
         title: "Assistants",
-        href: "/platform/assistants",
+        href: "/pages/platform/assistants",
         icon: Users
       },
       {
         title: "Phone Numbers",
-        href: "/platform/phone-numbers",
+        href: "/pages/platform/phone-numbers",
         icon: Phone
       },
       {
         title: "Files",
-        href: "/platform/files",
+        href: "/pages/platform/files",
         icon: FileText
       },
       {
         title: "Tools",
-        href: "/platform/tools",
+        href: "/pages/platform/tools",
         icon: Tool
       },
       {
         title: "Blocks",
-        href: "/platform/blocks",
+        href: "/pages/platform/blocks",
         icon: Cube
       },
       {
         title: "Squads",
-        href: "/platform/squads",
+        href: "/pages/platform/squads",
         icon: UsersRound
       }
     ]
   },
   {
     title: "Voice Library",
-    href: "/voice-library",
+    href: "/pages/voice-library",
     icon: MessageSquare
   },
   {
     title: "Logs",
-    href: "/logs",
+    href: "/pages/logs",
     icon: FileText,
     isExpandable: true,
     subItems: [
       {
         title: "Calls",
-        href: "/logs/calls",
+        href: "/pages/logs/calls",
         icon: Phone
       },
       {
         title: "API Requests",
-        href: "/logs/api",
+        href: "/pages/logs/api",
         icon: Tool
       },
       {
         title: "Webhooks",
-        href: "/logs/webhooks",
+        href: "/pages/logs/webhooks",
         icon: Webhook
       }
     ]
@@ -103,9 +103,15 @@ interface MainNavProps extends React.HTMLAttributes<HTMLElement> {
   items?: NavItem[];
 }
 
-export function MainNav({ className, items, ...props }: MainNavProps) {
+export function MainNav({
+  className,
+  items = navItems,
+  ...props
+}: MainNavProps) {
+  const pathname = usePathname();
   const [expandedItems, setExpandedItems] = useState<string[]>([]);
 
+  // Toggles expand state for expandable items
   const toggleExpand = (title: string) => {
     setExpandedItems((prev) =>
       prev.includes(title)
@@ -114,23 +120,42 @@ export function MainNav({ className, items, ...props }: MainNavProps) {
     );
   };
 
+  // Checks if the current item or its subItems match the current pathname
+  const isActive = (item: NavItem): boolean => {
+    if (item.href === pathname) return true;
+    if (item.subItems) {
+      return item.subItems.some((subItem) => subItem.href === pathname);
+    }
+    return false;
+  };
+
+  useEffect(() => {
+    // Automatically expand items if one of their subItems is active
+    items.forEach((item) => {
+      if (
+        item.subItems &&
+        isActive(item) &&
+        !expandedItems.includes(item.title)
+      ) {
+        setExpandedItems((prev) => [...prev, item.title]);
+      }
+    });
+  }, [pathname, items, expandedItems]);
+
   return (
     <nav className={cn("flex flex-col space-y-1", className)} {...props}>
-      {items?.map((item) => (
+      {items.map((item) => (
         <div key={item.title}>
-          <a
+          <Link
             href={item.href}
             className={cn(
               "flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors",
-              item.isSelected
+              isActive(item)
                 ? "bg-[#2A2A2A] text-white"
                 : "text-gray-400 hover:bg-[#2A2A2A] hover:text-white"
             )}
             onClick={(e) => {
-              e.preventDefault();
               if (item.isExpandable) {
-                toggleExpand(item.title);
-              } else {
                 e.preventDefault();
                 toggleExpand(item.title);
               }
@@ -146,21 +171,23 @@ export function MainNav({ className, items, ...props }: MainNavProps) {
                 )}
               />
             )}
-          </a>
+          </Link>
           {item.subItems && expandedItems.includes(item.title) && (
             <div className="ml-6 mt-1 space-y-1">
               {item.subItems.map((subItem) => (
-                <a
+                <Link
                   key={subItem.title}
                   href={subItem.href}
-                  className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-gray-400 transition-colors hover:bg-[#2A2A2A] hover:text-white"
-                  onClick={(e) => {
-                    e.preventDefault();
-                  }}
+                  className={cn(
+                    "flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors",
+                    pathname === subItem.href
+                      ? "bg-[#2A2A2A] text-white"
+                      : "text-gray-400 hover:bg-[#2A2A2A] hover:text-white"
+                  )}
                 >
                   <subItem.icon className="h-4 w-4" />
                   <span>{subItem.title}</span>
-                </a>
+                </Link>
               ))}
             </div>
           )}
