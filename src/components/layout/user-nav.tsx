@@ -13,7 +13,7 @@ import {
 export function UserNav() {
   return (
     <div className="space-y-2">
-      <p className="px-3 text-sm text-gray-400">Profile</p>
+      <a className="px-3 text-sm text-gray-400" href="/pages/account">Profile</a>
       <div className="flex items-center gap-2">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
