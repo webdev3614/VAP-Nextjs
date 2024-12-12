@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 export type NavItem = {
   title: string;
@@ -137,7 +138,7 @@ export function MainNav({ className, items = navItems, ...props }: MainNavProps)
     <nav className={cn("flex flex-col space-y-1", className)} {...props}>
       {items.map((item) => (
         <div key={item.title}>
-          <a
+          <Link
             href={item.href}
             className={cn(
               "flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors",
@@ -162,7 +163,7 @@ export function MainNav({ className, items = navItems, ...props }: MainNavProps)
                 )}
               />
             )}
-          </a>
+          </Link>
           {item.subItems && expandedItems.includes(item.title) && (
             <div className="ml-6 mt-1 space-y-1">
               {item.subItems.map((subItem) => (
