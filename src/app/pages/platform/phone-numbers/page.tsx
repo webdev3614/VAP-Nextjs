@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const PhoneNumber = () => {
-  return (
-    <div className="text-white">PhoneNumber</div>
-  )
-}
+  return <div className="text-white">PhoneNumber</div>;
+};
 
-export default PhoneNumber
+export default PhoneNumber;
