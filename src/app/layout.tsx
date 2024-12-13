@@ -8,7 +8,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "VAPI Dashboard",
+  title: "DAPA Dashboard",
   description: "Track and manage your VAPI assistants"
 };
 
