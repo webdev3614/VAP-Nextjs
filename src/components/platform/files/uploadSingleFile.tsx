@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, { useRef } from "react";
 import { useDropzone } from "react-dropzone";
 interface FileUploadProps {
@@ -127,14 +128,15 @@ const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload }) => {
                   </svg>
                 </span>
               </button>
-              <a
-                href="https://docs.vapi.ai/customization/knowledgebase"
+              <Link
+
+                href="#"
                 target="_blank"
                 rel="noreferrer"
                 className="w-full items-center justify-center whitespace-nowrap ring-1 ring-transparent text-sm font-bold disabled:pointer-events-none disabled:opacity-50 transition-all duration-150 ease-in-out active:scale-[0.98] group rounded-lg border border-border/50 hover:bg-secondary/50 hover:border-border border-gray-300 text-center text-gray-300 hover:shadow-sm hover:shadow-black/10 text-text/50 hover:text-text h-10 px-4 py-2 block truncate hover:no-underline"
               >
                 Documentation
-              </a>
+              </Link>
             </div>
           </div>
         </div>

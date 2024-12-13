@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import UploadedFileDetails from "./uploadedFileDetail"; // Import the new component
-import FileUpload from "./uploadSingleFile";
+import UploadedFileDetails from "../../../../components/platform/files/uploadedFileDetail"; // Import the new component
+import FileUpload from "../../../../components/platform/files/uploadSingleFile";
 
 interface UploadedFile {
   name: string;

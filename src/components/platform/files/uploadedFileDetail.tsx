@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 interface UploadedFile {
@@ -105,11 +106,11 @@ const UploadedFileDetails: React.FC<UploadedFileDetailsProps> = ({
                           ></rect>
                           <path
                             d="M13.7988 10.332C13.7988 11.582 14.3945 12.1777 15.6445 12.1777L22.7148 12.1777L22.7148 21.0449C22.7148 23.0762 21.709 24.1016 19.6875 24.1016L11.7376 24.1016C12.279 23.182 12.5879 22.1158 12.5879 20.9863C12.5879 17.5293 9.74609 14.6875 6.28906 14.6875L6.28906 6.23047C6.28906 4.19922 7.30469 3.16406 9.31641 3.16406L13.7988 3.16406ZM16.4062 4.0918L21.7871 9.57031C22.2559 10.0488 22.5391 10.4395 22.5977 10.8398L15.6738 10.8398C15.3125 10.8398 15.1367 10.6641 15.1367 10.3125L15.1367 3.27148C15.5469 3.33984 15.9473 3.62305 16.4062 4.0918Z"
-                            fill-opacity="0.85"
+                            fillOpacity="0.85"
                           ></path>
                           <path
                             d="M11.25 20.9863C11.25 23.6914 8.98438 25.9473 6.28906 25.9473C3.57422 25.9473 1.32812 23.7109 1.32812 20.9863C1.32812 18.2617 3.57422 16.0254 6.28906 16.0254C9.01367 16.0254 11.25 18.2617 11.25 20.9863ZM5.69336 18.4766L5.69336 20.3809L3.7793 20.3809C3.42773 20.3809 3.18359 20.625 3.18359 20.9863C3.18359 21.3477 3.42773 21.582 3.7793 21.582L5.69336 21.582L5.69336 23.4961C5.69336 23.8477 5.92773 24.0918 6.28906 24.0918C6.66016 24.0918 6.89453 23.8477 6.89453 23.4961L6.89453 21.582L8.79883 21.582C9.16016 21.582 9.39453 21.3477 9.39453 20.9863C9.39453 20.625 9.16016 20.3809 8.79883 20.3809L6.89453 20.3809L6.89453 18.4766C6.89453 18.125 6.66016 17.8809 6.28906 17.8809C5.92773 17.8809 5.69336 18.125 5.69336 18.4766Z"
-                            fill-opacity="0.85"
+                            fillOpacity="0.85"
                           ></path>
                         </g>
                       </svg>
@@ -148,20 +149,20 @@ const UploadedFileDetails: React.FC<UploadedFileDetailsProps> = ({
                           ></rect>
                           <path
                             d="M19.9219 9.96094C19.9219 15.4004 15.4102 19.9219 9.96094 19.9219C4.52148 19.9219 0 15.4004 0 9.96094C0 4.51172 4.51172 0 9.95117 0C15.4004 0 19.9219 4.51172 19.9219 9.96094ZM9.11133 6.05469L9.11133 9.11133L6.05469 9.11133C5.54688 9.11133 5.19531 9.46289 5.19531 9.9707C5.19531 10.4688 5.54688 10.8008 6.05469 10.8008L9.11133 10.8008L9.11133 13.8672C9.11133 14.3652 9.45312 14.7266 9.95117 14.7266C10.459 14.7266 10.8105 14.375 10.8105 13.8672L10.8105 10.8008L13.877 10.8008C14.375 10.8008 14.7363 10.4688 14.7363 9.9707C14.7363 9.46289 14.375 9.11133 13.877 9.11133L10.8105 9.11133L10.8105 6.05469C10.8105 5.54688 10.459 5.18555 9.95117 5.18555C9.45312 5.18555 9.11133 5.54688 9.11133 6.05469Z"
-                            fill-opacity="0.85"
+                            fillOpacity="0.85"
                           ></path>
                         </g>
                       </svg>
                     </span>
                   </button>
-                  <a
-                    href="https://docs.vapi.ai/customization/knowledgebase"
+                  <Link
+                    href="#"
                     target="_blank"
                     rel="noreferrer"
                     className="w-full items-center justify-center whitespace-nowrap ring-1 ring-transparent text-sm font-bold disabled:pointer-events-none disabled:opacity-50 transition-all duration-150 ease-in-out active:scale-[0.98] group rounded-lg border border-border/50 hover:bg-secondary/50 hover:border-border hover:shadow-sm hover:shadow-black/10 text-text/50 hover:text-text h-10 px-4 py-2 block truncate hover:no-underline border-gray-600 hover:border-gray-500 text-[#ffffff4d] hover:text-[#ffffff66]"
                   >
                     Documentation
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -176,7 +177,7 @@ const UploadedFileDetails: React.FC<UploadedFileDetailsProps> = ({
                 <div className="flex justify-between items-center transition-all duration-150 ease-in-out">
                   <div className="flex flex-col justify-between items-start">
                     <div className="ellipsis-text font-semibold text-sm text-text text-[#ffffff4d] hover:text-[#ffffff66]">
-                      yaqoob resume (1).pdf
+                      yaqoob.pdf
                     </div>
                     <div className="flex gap-1.5 items-center overflow-hidden">
                       <p className="ellipsis-text text-sm text-text/40"></p>
@@ -197,7 +198,7 @@ const UploadedFileDetails: React.FC<UploadedFileDetailsProps> = ({
                 aria-expanded="false"
                 data-state="closed"
               >
-                <span>yaqoob resume (1).pdf</span>
+                <span>{file.name}</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -255,18 +256,18 @@ const UploadedFileDetails: React.FC<UploadedFileDetailsProps> = ({
                         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM9.498 16.19c-.309.29-.765.42-1.296.42a2.23 2.23 0 0 1-.308-.018v1.426H7v-3.936A7.558 7.558 0 0 1 8.219 14c.557 0 .953.106 1.22.319.254.202.426.533.426.923-.001.392-.131.723-.367.948zm3.807 1.355c-.42.349-1.059.515-1.84.515-.468 0-.799-.03-1.024-.06v-3.917A7.947 7.947 0 0 1 11.66 14c.757 0 1.249.136 1.633.426.415.308.675.799.675 1.504 0 .763-.279 1.29-.663 1.615zM17 14.77h-1.532v.911H16.9v.734h-1.432v1.604h-.906V14.03H17v.74zM14 9h-1V4l5 5h-4z"></path>
                       </svg>{" "}
                       <div className="text-sm mt-2 text-wrap word-wrap text-text text-[#ffffff4d] hover:text-[#ffffff66]">
-                        yaqoob resume (1).pdf
+                        yaqoob.pdf
                       </div>{" "}
                     </div>
                     <div>
                       <div className="chakra-editable text-text css-qqfgvy">
                         <span className="chakra-editable__preview css-1gasyng pt-0 pb-0 w-full cursor-pointer text-white">
-                          yaqoob resume (1).pdf
+                        {file.name}
                         </span>
                         
                       </div>
                       <div className="text-text/60 text-[#ffffff4d] hover:text-[#ffffff66]">
-                        application/pdf - 173.38 KB
+                      {file.type} - {file.size}
                       </div>
                     </div>
                     <div className="flex flex-col sm:flex-row gap-2">
@@ -306,7 +307,7 @@ const UploadedFileDetails: React.FC<UploadedFileDetailsProps> = ({
                         </svg>{" "}
                         Copy URL{" "}
                       </button>
-                      <button className="inline-flex w-full items-center justify-center whitespace-nowrap ring-1 ring-transparent text-sm font-bold disabled:pointer-events-none disabled:opacity-50 transition-all duration-150 ease-in-out group bg-red-500 text-white hover:bg-red-400 active:scale-[0.98] rounded-lg py-1 px-2 space-x-2">
+                      <button className="inline-flex w-full items-center justify-center whitespace-nowrap ring-1 ring-transparent text-sm font-bold disabled:pointer-events-none disabled:opacity-50 transition-all duration-150 ease-in-out group bg-red-500 text-white hover:bg-red-400 active:scale-[0.98] rounded-lg py-1 px-2 space-x-2" onClick={onDelete}>
                         <svg
                           width="15"
                           height="15"
@@ -371,11 +372,11 @@ const UploadedFileDetails: React.FC<UploadedFileDetailsProps> = ({
                             ></rect>
                             <path
                               d="M15.9277 3.04688L15.9277 4.54102L14.3555 4.54102L14.3555 3.13477C14.3555 2.11914 13.8086 1.5918 12.8418 1.5918L3.08594 1.5918C2.10938 1.5918 1.57227 2.11914 1.57227 3.13477L1.57227 12.8418C1.57227 13.8574 2.10938 14.3848 3.08594 14.3848L4.73633 14.3848L4.73633 15.957L3.06641 15.957C1.01562 15.957 0 14.9414 0 12.9297L0 3.04688C0 1.03516 1.01562 0.0195312 3.06641 0.0195312L12.8711 0.0195312C14.9023 0.0195312 15.9277 1.03516 15.9277 3.04688Z"
-                              fill-opacity="0.85"
+                              fillOpacity="0.85"
                             ></path>
                             <path
                               d="M7.80273 20.4785L17.6074 20.4785C19.6387 20.4785 20.6641 19.4629 20.6641 17.4512L20.6641 7.56836C20.6641 5.55664 19.6387 4.54102 17.6074 4.54102L7.80273 4.54102C5.75195 4.54102 4.73633 5.54688 4.73633 7.56836L4.73633 17.4512C4.73633 19.4629 5.75195 20.4785 7.80273 20.4785ZM7.82227 18.9062C6.85547 18.9062 6.30859 18.3789 6.30859 17.3633L6.30859 7.65625C6.30859 6.64062 6.85547 6.11328 7.82227 6.11328L17.5781 6.11328C18.5449 6.11328 19.0918 6.64062 19.0918 7.65625L19.0918 17.3633C19.0918 18.3789 18.5449 18.9062 17.5781 18.9062Z"
-                              fill-opacity="0.85"
+                              fillOpacity="0.85"
                             ></path>
                           </g>
                         </svg>
