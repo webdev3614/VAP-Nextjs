@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { LineChart } from "lucide-react";
-import '../../../components/overview/overview.css'
+import "../../../components/overview/overview.css";
 
 export default function OverView() {
   const router = useRouter();
@@ -663,7 +663,7 @@ export default function OverView() {
                         position: "relative",
                         cursor: "default",
                         width: "292px",
-                        height: "420px",
+                        height: "420px"
                       }}
                     >
                       <svg
@@ -703,7 +703,7 @@ export default function OverView() {
       A3,3,0,0,0,218.93833011524188,210Z"
                                 role="img"
                                 style={{
-                                  transition: "transform 0.3s, fill 0.3s",
+                                  transition: "transform 0.3s, fill 0.3s"
                                 }}
                               ></path>
                             </g>
@@ -720,7 +720,7 @@ export default function OverView() {
                                 className="recharts-curve recharts-pie-label-line"
                                 d="M6.133,203.893L-13.848,203.021"
                                 style={{
-                                  transition: "transform 0.3s, fill 0.3s",
+                                  transition: "transform 0.3s, fill 0.3s"
                                 }}
                               ></path>
                               <text
@@ -745,7 +745,7 @@ export default function OverView() {
                           position: "absolute",
                           top: "0px",
                           left: "0px",
-                          transform: "translate(61.5999px, 215.42px)",
+                          transform: "translate(61.5999px, 215.42px)"
                         }}
                       ></div>
                     </div>
@@ -782,7 +782,7 @@ export default function OverView() {
                         position: "relative",
                         cursor: "default",
                         width: "292px",
-                        height: "420px",
+                        height: "420px"
                       }}
                     >
                       <svg
@@ -822,7 +822,7 @@ export default function OverView() {
       A3,3,0,0,0,218.93833011524188,210Z"
                                 role="img"
                                 style={{
-                                  transition: "transform 0.3s, fill 0.3s",
+                                  transition: "transform 0.3s, fill 0.3s"
                                 }}
                               ></path>
                             </g>
@@ -839,7 +839,7 @@ export default function OverView() {
                                 className="recharts-curve recharts-pie-label-line"
                                 d="M6.133,203.893L-13.848,203.021"
                                 style={{
-                                  transition: "transform 0.3s, fill 0.3s",
+                                  transition: "transform 0.3s, fill 0.3s"
                                 }}
                               ></path>
                               <text
@@ -864,7 +864,7 @@ export default function OverView() {
                           position: "absolute",
                           top: "0px",
                           left: "0px",
-                          transform: "translate(61.5999px, 215.42px)",
+                          transform: "translate(61.5999px, 215.42px)"
                         }}
                       ></div>
                     </div>
