@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import VoiceCard from './VoiceCard';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface Voice {
   bgImage: string;
@@ -31,31 +32,31 @@ const Slider: React.FC = () => {
 
   const voices: Voice[] = [
     {
-      bgImage: '/images/road-dawg.jpg',
+      bgImage: '/img/voiceMale1.jpg',
       title: 'Road Dawg',
       description: 'Conversational, Healthcare',
       badge: '11LABS',
     },
     {
-      bgImage: '/images/aurora.jpg',
+      bgImage: '/img/voiceFemale1.jpg',
       title: 'Aurora',
       description: 'British, Support',
       badge: 'PLAYHT',
     },
     {
-      bgImage: '/images/vits-ara-1.jpg',
+      bgImage: '/img/voiceFemale2.jpg',
       title: 'vits-ara-1',
       description: 'Arabic',
       badge: 'NEETS',
     },
     {
-      bgImage: '/images/mady.jpg',
+      bgImage: '/img/voiceFemale1.jpg',
       title: 'Mady',
       description: 'Spanish, Commercial',
       badge: '11LABS',
     },
     {
-      bgImage: '/images/emma.jpg',
+      bgImage: '/img/voiceFemale2.jpg',
       title: 'Emma',
       description: 'Professional, Neutral',
       badge: 'ELEVENLABS',
@@ -66,28 +67,24 @@ const Slider: React.FC = () => {
       description: 'Technical, Informative',
       badge: 'PLAYHT',
     },
-    {
-      bgImage: '/images/aria.jpg',
-      title: 'Aria',
-      description: 'Friendly, Conversational',
-      badge: '11LABS',
-    },
   ];
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full overflow-hidden">
       <div className="flex items-center justify-between w-full">
         <button
           onClick={scrollLeft}
-          className="bg-black bg-opacity-50 text-white w-10 h-10 rounded-full flex items-center justify-center z-10 hover:bg-opacity-70"
+          className=" text-white w-10 h-10 rounded-full flex items-center justify-center z-10 hover:bg-opacity-70"
           aria-label="Scroll Left"
         >
-          ◀
+          
+          <ChevronLeft/>
         </button>
         
         <div 
           ref={sliderRef}
           className="flex overflow-x-scroll space-x-8 py-6 scroll-smooth flex-grow mx-4 
+          cursor-grab touch-pan-y justify-between
             scrollbar-hide 
             [&::-webkit-scrollbar]:hidden 
             [-ms-overflow-style:none] 
@@ -114,10 +111,10 @@ const Slider: React.FC = () => {
         
         <button
           onClick={scrollRight}
-          className="bg-black bg-opacity-50 text-white w-10 h-10 rounded-full flex items-center justify-center z-10 hover:bg-opacity-70"
+          className=" text-white w-10 h-10 rounded-full flex items-center justify-center z-10 hover:bg-opacity-70"
           aria-label="Scroll Right"
         >
-          ▶
+          <ChevronRight/>
         </button>
       </div>
     </div>

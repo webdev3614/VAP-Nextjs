@@ -19,7 +19,21 @@ const smallCardData = [
         rate: "$0.020",
         ping: "500",
       },
-      
+    {
+      title: "New Voice 1",
+      rate: "$0.045",
+      ping: "250",
+    },
+    {
+      title: "New Voice 2",
+      rate: "$0.060",
+      ping: "350",
+    },
+    {
+      title: "New Voice 3",
+      rate: "$0.030",
+      ping: "450",
+    },
   ];
   
   export default smallCardData;
