@@ -34,6 +34,11 @@ const smallCardData = [
       rate: "$0.030",
       ping: "450",
     },
+    {
+      title: "New Voice 4 ",
+      rate: "$0.080",
+      ping: "800",
+    },
   ];
   
   export default smallCardData;
