@@ -13,12 +13,12 @@ interface UploadedFile {
 const Files: React.FC = () => {
   const [uploadedFile, setUploadedFile] = useState<UploadedFile | null>(null);
 
-  const handleFileUpload = (file : any) => {
+  const handleFileUpload = (file: any) => {
     setUploadedFile({
       name: file.name,
       size: (file.size / 1024).toFixed(2) + " KB",
       type: file.type,
-      createdAt: new Date().toLocaleString(),
+      createdAt: new Date().toLocaleString()
     });
   };
 
@@ -28,12 +28,11 @@ const Files: React.FC = () => {
 
   return (
     <div className="flex flex-col sm:flex-row flex-1 h-full">
-         {uploadedFile ? (
-           <UploadedFileDetails file={uploadedFile} onDelete={handleDelete} />
-        ) : (
-          <FileUpload onFileUpload={handleFileUpload} />
-          )}
-       
+      {uploadedFile ? (
+        <UploadedFileDetails file={uploadedFile} onDelete={handleDelete} />
+      ) : (
+        <FileUpload onFileUpload={handleFileUpload} />
+      )}
     </div>
   );
 };
