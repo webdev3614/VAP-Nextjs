@@ -4,7 +4,7 @@ import smallCardData from "@/components/ui/smallCardData";
 import { Button } from "@/components/ui/button";
 import Slider from "@/components/ui/VoiceSlider";
 import { useRouter } from "next/navigation";
-import { AudioLines, TriangleAlert } from "lucide-react";
+import { Copy,RefreshCcw } from "lucide-react";
 import VoiceImage from "../../../../public/voice.svg"
 import {
   Select,
@@ -50,22 +50,35 @@ export default function OverView() {
 
   return (
     // max-w-6xl
-    <div className="max-w-screen-2xl w-full px-2 overflow-hidden border-border rounded-2xl shadow-sm shadow-black/20 " style={{ backgroundColor: "#1d1e22" }}>
-      <header className=" flex justify-between items-center mb-6 bg-secondary/50 border-b border-border backdrop-blur-md z-40 rounded-t-xl">
+    <div className="max-w-screen-2xl w-full overflow-hidden border-border rounded-2xl shadow-sm shadow-black/20 " style={{ backgroundColor: "#1d1e22" }}>
+      <header className=" flex justify-between items-center mb-6 bg-secondary/50 border-b border-border backdrop-blur-md z-40 rounded-t-xl px-4">
         <div className="flex gap-2 items-center my-2 px-2">
           {/* <AudioLines className="bg-white"/> */}
           <div className="bg-secondary rounded-lg" >
-            <img src={VoiceImage.src} alt="" className="h-10 w-10" />
+            <img src={VoiceImage.src} alt="" className="h-6 w-6" />
           </div>
-          <h1 className="text-4xl font-bold text-white ">Voice Library</h1>
+          <h1 className="text-xl font-bold text-white ">Voice Library</h1>
         </div>
       </header>
-      <h2 className="text-lg text-white font-bold">Featured Voices</h2>
+      <h2 className=" px-4 text-lg text-white font-bold">Featured Voices</h2>
       <div className="relative mb-8">
         <Slider />
       </div>
-      <h2 className="text-lg text-gray-400 mb-4">Explore All Voices</h2>
-      <div className="flex items-center gap-4 mb-6">
+      <div className="flex items-center justify-between">
+      <h2 className="px-4 text-lg text-white mb-4 font-bold">Explore All Voices</h2>
+      <div className="flex justify-center gap-4 mb-4 px-4">
+   <button className="bg-[#1e1e1e]  text-white px-2 py-2 rounded-md flex items-center gap-2 border-2 border-gray-800 text-sm">
+   <span><Copy size={12} /></span>
+   Clone</button>
+   <button className="bg-[#1e1e1e]  text-white px-2 py-2 rounded-md flex items-center gap-2 border-2 border-gray-800 text-sm">
+   <span>+</span>
+   Add</button>
+   <button className="bg-[#1e1e1e]  text-white px-2 py-2 rounded-md flex items-center gap-2 border-2 border-gray-800 text-sm">
+   <span><RefreshCcw size={12} /></span>
+   Sync</button>
+      </div>
+    </div>
+      <div className="flex items-center gap-4 mb-6 px-4">
         {/* Search bar */}
         <input
           type="text"
