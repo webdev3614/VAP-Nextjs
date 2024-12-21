@@ -1,11 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { MoreVertical, Phone } from "lucide-react";
 
-interface AssistHeaderProps {
-  onCreateAssistant: () => void;
-}
-
-export function AssistHeader({ onCreateAssistant }: AssistHeaderProps) {
+export function AssistHeader() {
   return (
     <header className="flex items-center justify-between px-4 py-3 border-b border-[#2A2A2A]">
       <div className="flex items-center gap-4">
@@ -16,7 +12,6 @@ export function AssistHeader({ onCreateAssistant }: AssistHeaderProps) {
       </div>
       <div className="flex items-center gap-2">
         <Button
-          onClick={onCreateAssistant}
           variant="ghost"
           className="bg-[#40B8A6] hover:bg-[#40B8A6]/90 text-white text-xs px-3 py-1 h-7 rounded"
         >

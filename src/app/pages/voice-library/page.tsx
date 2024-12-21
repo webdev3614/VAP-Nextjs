@@ -20,6 +20,7 @@ interface GeneralSelectProps {
   defaultValue: string;
   name: string;
 }
+
 export default function OverView() {
   const router = useRouter();
   const [showAlert, setShowAlert] = useState(false);
@@ -49,6 +50,7 @@ export default function OverView() {
       </Select>
     );
   };
+
   const handleClipboardClick = () => {
     setShowAlert(true);
     setTimeout(() => setShowAlert(false), 2000);
