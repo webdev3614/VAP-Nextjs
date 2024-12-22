@@ -3,53 +3,37 @@
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { LineChart } from "lucide-react";
-import '../../../components/overview/overview.css'
+import "../../../components/overview/overview.css";
+import { useState } from "react";
+import PieChartComponent from "@/components/ui/PieChart";
 
 export default function OverView() {
   const router = useRouter();
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState("Day");
 
-  const handleButtonClick = () => {
-    router.push("/pages/platform/assistants"); // Replace '/your-target-page' with the route you want to navigate to
+  const toggleDropdown = () => {
+    setIsOpen((prev) => !prev);
   };
+
+  const handleOptionClick = (option: string) => {
+    setSelectedOption(option);
+    setIsOpen(false);
+  };
+
+  const callsData = [
+    { name: 'customer-ended-calls', value: 400 },
+    { name: 'customer-calls', value: 300 },
+  ];
+
+  const assistenceDurationData = [
+    { name: 'test-1', value: 4 },
+    { name: 'test-2', value: 1 },
+  ];
+
 
   return (
     <>
-      {/* <div className="max-w-4xl">
-      <div className="mb-4">
-    
-        <LineChart className="h-24 w-24 text-gray-600" />
-      </div>
-      <h1 className="mb-2 text-2xl font-semibold text-white">Track & Manage</h1>
-      <p className="mb-4 text-gray-400">
-        Track how your assistants are performing, how much you're spending, and
-        more.
-      </p>
-      <p className="mb-6 text-gray-500">
-        Looks like there are no metrics here - create an assistant to start
-        seeing your metrics.
-      </p>
-      <Button
-        onClick={handleButtonClick}
-        className="bg-[#4DB6AC] hover:bg-[#45A399] text-white font-medium py-2 px-4 rounded flex items-center"
-      >
-        Get Started
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="ml-2"
-        >
-          <path d="M5 12h14" />
-          <path d="m12 5 7 7-7 7" />
-        </svg>
-      </Button>
-    </div> */}
       <div className="!w-full hide-scrollbar overflow-hidden pb-4">
         <div className="flex flex-row justify-between items-center sticky top-0 bg-secondary/50 border-b border-border backdrop-blur-md z-40 rounded-t-xl">
           <div className="flex flex-row gap-x-2 items-center my-4 pl-4 ">
@@ -89,17 +73,16 @@ export default function OverView() {
           <div className="flex items-center ">
             <button
               className="inline-flex w-full items-center justify-center whitespace-nowrap ring-1 ring-transparent text-sm font-bold disabled:pointer-events-none disabled:opacity-50 transition-all duration-150 ease-in-out active:scale-[0.98] group rounded-lg border border-border/50 hover:bg-secondary/50 hover:border-border hover:shadow-sm hover:shadow-black/10 text-text/50 hover:text-text h-10 px-4 py-2 mr-2 max-w-[80px]"
-              id="radix-:r1d:"
+              onClick={toggleDropdown}
               aria-haspopup="menu"
-              aria-expanded="false"
-              data-state="closed"
+              aria-expanded={isOpen}
             >
               <span className="mr-2">
                 <svg
                   width="20.1172"
                   height="11.6504"
                   viewBox="0 0 20.1172 11.6504"
-                  fill="'none' || '#000000"
+                  fill="none"
                   stroke="none"
                   strokeWidth="2"
                   strokeLinecap="round"
@@ -129,8 +112,28 @@ export default function OverView() {
                   </g>
                 </svg>
               </span>
-              Day
+              {selectedOption}
             </button>
+
+            {isOpen && (
+              <div
+                className="absolute right-0 top-9 z-50 mt-2 w-48 rounded-xl bg-popover text-popover-foreground p-1 shadow-md border border-border backdrop-blur-lg"
+                role="menu"
+                aria-orientation="vertical"
+                aria-labelledby="dropdown-button"
+              >
+                {["Day", "Week", "Month"].map((option) => (
+                  <div
+                    key={option}
+                    className="relative flex cursor-pointer select-none items-center rounded-lg px-2 py-1.5 text-sm transition-colors hover:bg-hover"
+                    role="menuitem"
+                    onClick={() => handleOptionClick(option)}
+                  >
+                    {option}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
         <div className="bg-foreground/10 h-[1px] w-[100%] rounded-full scale-100">
@@ -639,118 +642,7 @@ export default function OverView() {
                 <p className="text-xs text-text/50">
                   Calls aggregated by reason of why the call ended or completed.
                 </p>
-
-                <div
-                  data-chart="chart-r23"
-                  className='flex aspect-video justify-center text-xs [&amp;_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&amp;_.recharts-cartesian-grid_line]:stroke-border/50 [&amp;_.recharts-curve.recharts-tooltip-cursor]:stroke-border [&amp;_.recharts-dot[stroke="#fff"]]:stroke-transparent [&amp;_.recharts-layer]:outline-none [&amp;_.recharts-polar-grid_[stroke="#ccc"]]:stroke-border [&amp;_.recharts-radial-bar-background-sector]:fill-muted [&amp;_.recharts-rectangle.recharts-tooltip-cursor]:fill-muted [&amp;_.recharts-reference-line-line]:stroke-border [&amp;_.recharts-sector[stroke="#fff"]]:stroke-transparent [&amp;_.recharts-sector]:outline-none [&amp;_.recharts-surface]:outline-none w-full h-[420px]'
-                >
-                  {/* <style>
- [data-chart=chart-r23] {
-  --color-customer-ended-call: #8884d8;
-}
-,
-.dark [data-chart=chart-r23] {
-  --color-customer-ended-call: #8884d8;
-}
-</style> */}
-                  <div
-                    className="recharts-responsive-container"
-                    style={{ width: "100%", height: "100%", minWidth: "0px" }}
-                  >
-                    <div
-                      className="recharts-wrapper"
-                      style={{
-                        position: "relative",
-                        cursor: "default",
-                        width: "292px",
-                        height: "420px",
-                      }}
-                    >
-                      <svg
-                        cx="50%"
-                        cy="50%"
-                        className="recharts-surface"
-                        width="292"
-                        height="420"
-                        viewBox="0 0 292 420"
-                        style={{ width: "100%", height: "100%" }}
-                      >
-                        <title></title>
-                        <desc></desc>
-                        <defs>
-                          <clipPath id="recharts13-clip">
-                            <rect x="5" y="5" height="410" width="282"></rect>
-                          </clipPath>
-                        </defs>
-                        <g className="recharts-layer recharts-pie">
-                          <g className="recharts-layer">
-                            <g className="recharts-layer recharts-pie-sector">
-                              <path
-                                cx="146"
-                                cy="210"
-                                name="customer-ended-call"
-                                stroke="#8884d8"
-                                fill="#8884d880"
-                                strokeWidth="1"
-                                className="recharts-sector"
-                                d="M 282.96714934611146,210
-    A3,3,0,0,0,285.96642998872704,206.93430656934308
-    A140,140,0,1,0,285.1666226776139,225.2529057070007
-    A3,3,0,0,0,282.44594799133654,221.93747363328978
-  L218.66077774846946,216.3569943359678
-      A3,3,0,0,0,215.42399638925826,218.9615135632467
-      A70,70,0,1,1,215.94086449406757,207.12328767123287
-      A3,3,0,0,0,218.93833011524188,210Z"
-                                role="img"
-                                style={{
-                                  transition: "transform 0.3s, fill 0.3s",
-                                }}
-                              ></path>
-                            </g>
-                          </g>
-                          <g className="recharts-layer recharts-pie-labels">
-                            <g className="recharts-layer">
-                              <path
-                                cx="146"
-                                cy="210"
-                                fill="none"
-                                stroke="#8884d880"
-                                name="customer-ended-call"
-                                strokeWidth="1"
-                                className="recharts-curve recharts-pie-label-line"
-                                d="M6.133,203.893L-13.848,203.021"
-                                style={{
-                                  transition: "transform 0.3s, fill 0.3s",
-                                }}
-                              ></path>
-                              <text
-                                x="-13.847715453097237"
-                                y="203.02089802154623"
-                                fill="#8884d8"
-                                textAnchor="middle"
-                                dominantBaseline="central"
-                                style={{ fontSize: "13px" }}
-                              >
-                                1
-                              </text>
-                            </g>
-                          </g>
-                        </g>
-                      </svg>
-                      <div
-                        className="recharts-tooltip-wrapper"
-                        style={{
-                          visibility: "hidden",
-                          pointerEvents: "none",
-                          position: "absolute",
-                          top: "0px",
-                          left: "0px",
-                          transform: "translate(61.5999px, 215.42px)",
-                        }}
-                      ></div>
-                    </div>
-                  </div>
-                </div>
+                <PieChartComponent data={callsData} />
               </div>
               <div className="flex flex-col col-span-1 bg-secondary py-4 px-6 rounded-2xl border border-border shadow-sm shadow-black/10">
                 <p className="font-medium text-md text-text">
@@ -759,117 +651,7 @@ export default function OverView() {
                 <p className="text-xs text-text/50">
                   Average call duration by assistant in minutes.
                 </p>
-                <div
-                  data-chart="chart-r24"
-                  className='flex aspect-video justify-center text-xs [&amp;_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&amp;_.recharts-cartesian-grid_line]:stroke-border/50 [&amp;_.recharts-curve.recharts-tooltip-cursor]:stroke-border [&amp;_.recharts-dot[stroke="#fff"]]:stroke-transparent [&amp;_.recharts-layer]:outline-none [&amp;_.recharts-polar-grid_[stroke="#ccc"]]:stroke-border [&amp;_.recharts-radial-bar-background-sector]:fill-muted [&amp;_.recharts-rectangle.recharts-tooltip-cursor]:fill-muted [&amp;_.recharts-reference-line-line]:stroke-border [&amp;_.recharts-sector[stroke="#fff"]]:stroke-transparent [&amp;_.recharts-sector]:outline-none [&amp;_.recharts-surface]:outline-none w-full h-[420px]'
-                >
-                  {/* <style>
- [data-chart=chart-r24] {
-  --color-test: #8884d8;
-}
-,
-.dark [data-chart=chart-r24] {
-  --color-test: #8884d8;
-}
-</style> */}
-                  <div
-                    className="recharts-responsive-container"
-                    style={{ width: "100%", height: "100%", minWidth: "0px" }}
-                  >
-                    <div
-                      className="recharts-wrapper"
-                      style={{
-                        position: "relative",
-                        cursor: "default",
-                        width: "292px",
-                        height: "420px",
-                      }}
-                    >
-                      <svg
-                        cx="50%"
-                        cy="50%"
-                        className="recharts-surface"
-                        width="292"
-                        height="420"
-                        viewBox="0 0 292 420"
-                        style={{ width: "100%", height: "100%" }}
-                      >
-                        <title></title>
-                        <desc></desc>
-                        <defs>
-                          <clipPath id="recharts15-clip">
-                            <rect x="5" y="5" height="410" width="282"></rect>
-                          </clipPath>
-                        </defs>
-                        <g className="recharts-layer recharts-pie">
-                          <g className="recharts-layer">
-                            <g className="recharts-layer recharts-pie-sector">
-                              <path
-                                cx="146"
-                                cy="210"
-                                name="test"
-                                stroke="#8884d8"
-                                fill="#8884d880"
-                                strokeWidth="1"
-                                className="recharts-sector"
-                                d="M 282.96714934611146,210
-    A3,3,0,0,0,285.96642998872704,206.93430656934308
-    A140,140,0,1,0,285.1666226776139,225.2529057070007
-    A3,3,0,0,0,282.44594799133654,221.93747363328978
-  L218.66077774846946,216.3569943359678
-      A3,3,0,0,0,215.42399638925826,218.9615135632467
-      A70,70,0,1,1,215.94086449406757,207.12328767123287
-      A3,3,0,0,0,218.93833011524188,210Z"
-                                role="img"
-                                style={{
-                                  transition: "transform 0.3s, fill 0.3s",
-                                }}
-                              ></path>
-                            </g>
-                          </g>
-                          <g className="recharts-layer recharts-pie-labels">
-                            <g className="recharts-layer">
-                              <path
-                                cx="146"
-                                cy="210"
-                                fill="none"
-                                stroke="#8884d880"
-                                name="test"
-                                strokeWidth="1"
-                                className="recharts-curve recharts-pie-label-line"
-                                d="M6.133,203.893L-13.848,203.021"
-                                style={{
-                                  transition: "transform 0.3s, fill 0.3s",
-                                }}
-                              ></path>
-                              <text
-                                x="-13.847715453097237"
-                                y="203.02089802154623"
-                                fill="#8884d8"
-                                textAnchor="middle"
-                                dominantBaseline="central"
-                                style={{ fontSize: "13px" }}
-                              >
-                                0.1
-                              </text>
-                            </g>
-                          </g>
-                        </g>
-                      </svg>
-                      <div
-                        className="recharts-tooltip-wrapper"
-                        style={{
-                          visibility: "hidden",
-                          pointerEvents: "none",
-                          position: "absolute",
-                          top: "0px",
-                          left: "0px",
-                          transform: "translate(61.5999px, 215.42px)",
-                        }}
-                      ></div>
-                    </div>
-                  </div>
-                </div>
+                <PieChartComponent data={assistenceDurationData} />
               </div>
             </div>
             <div className="flex flex-col col-span-1 space-y-4">
@@ -976,7 +758,7 @@ export default function OverView() {
                 >
                   <ul className="flex-row items-center gap-1 flex w-full">
                     <a
-                      className="inline-flex w-full items-center justify-center whitespace-nowrap ring-1 ring-transparent text-sm font-bold disabled:pointer-events-none disabled:opacity-50 transition-all duration-150 ease-in-out group hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 gap-1 pl-2.5 !no-underline !text-text/50 hover:!text-text no-underline cursor-pointer active:scale-95 rounded-lg"
+                      className="inline-flex w-full items-center justify-center whitespace-nowrap ring-1 ring-transparent text-sm font-bold disabled:pointer-events-none disabled:opacity-50 transition-all duration-150 ease-in-out group hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 gap-1 pl-2.5 !no-underline text-[#ffffff80] hover:!text-text no-underline cursor-pointer active:scale-95 rounded-lg"
                       aria-label="Go to previous page"
                     >
                       <svg
@@ -1006,7 +788,7 @@ export default function OverView() {
                       </a>
                     </li>
                     <a
-                      className="inline-flex w-full items-center justify-center whitespace-nowrap ring-1 ring-transparent text-sm font-bold disabled:pointer-events-none disabled:opacity-50 transition-all duration-150 ease-in-out group hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 gap-1 pr-2.5 !no-underline !text-text/50 hover:!text-text no-underline cursor-pointer active:scale-95 rounded-lg"
+                      className="inline-flex w-full items-center justify-center whitespace-nowrap ring-1 ring-transparent text-sm font-bold disabled:pointer-events-none disabled:opacity-50 transition-all duration-150 ease-in-out group hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 gap-1 pr-2.5 !no-underline text-[#ffffff80] hover:!text-text no-underline cursor-pointer active:scale-95 rounded-lg"
                       aria-label="Go to next page"
                     >
                       <span>Next</span>
