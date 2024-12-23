@@ -34,7 +34,7 @@ export const ToogleButton = () => {
         setToogle(!isToogle)
     }
     return (
-        <div className="bg-primary w-full h-full"
+        <div className="w-full h-full"
             onClick={onToogle}>
 
         </div>
