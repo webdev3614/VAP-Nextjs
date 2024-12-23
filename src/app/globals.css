@@ -667,3 +667,19 @@
   margin-bottom: var(--chakra-space-4);
   gap: var(--chakra-space-2);
 }
+
+
+@keyframes slide-up {
+  from {
+    transform: translateY(100%); /* Start from below */
+    opacity: 0; /* Start invisible */
+  }
+  to {
+    transform: translateY(0); /* End at original position */
+    opacity: 1; /* End visible */
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out forwards; /* Adjust duration and easing as needed */
+}

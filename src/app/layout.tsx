@@ -35,7 +35,7 @@ export default function RootLayout({
             </div>
           </div>
 
-          <div className="flex-1 p-8 relative">
+          <div className="flex-1 p-8 relative overflow-hidden">
             {children}
 
             <Button
